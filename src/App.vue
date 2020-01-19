@@ -1,32 +1,33 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <v-app id="fibot">
+    <div>
+      <v-app-bar color="blue" class="justify-center" flat height="75px">
+        <v-spacer />
+        <v-toolbar-title>
+          <router-link to="/">
+            <img src="/logo.png" width="150" height="30" alt="Logo Noo-Noo" />
+          </router-link>
+        </v-toolbar-title>
+        <v-img src="/noonoo.gif" class="ml-3" max-width="75" max-height="75" />
+        <v-spacer />
+      </v-app-bar>
     </div>
-    <router-view/>
-  </div>
+
+    <v-content>
+      <router-view>
+        <v-container></v-container>
+      </router-view>
+    </v-content>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<script>
+export default {
+  props: {
+    source: String
+  },
+  data: () => ({
+    drawer: null
+  })
+};
+</script>
