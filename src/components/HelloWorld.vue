@@ -8,6 +8,7 @@
         <v-select v-if="brogranicenja" :items="items" label="Koji je objektiv funkcije?"></v-select>
         <div>
           <v-data-table :headers="headers" :items="varijable">
+            
             <template v-slot:item.name="props">
               <v-edit-dialog :return-value.sync="props.item.name" @save="save" @cancel="cancel" @open="open" @close="close">
                 {{ props.item.name }}
@@ -22,16 +23,9 @@
                 </template>
               </v-edit-dialog>
             </template>
+
             <template v-slot:item.iron="props">
-              <v-edit-dialog
-                :return-value.sync="props.item.iron"
-                large
-                persistent
-                @save="save"
-                @cancel="cancel"
-                @open="open"
-                @close="close"
-              >
+              <v-edit-dialog :return-value.sync="props.item.iron" large persistent @save="save" @cancel="cancel" @open="open" @close="close">
                 <div>{{ props.item.iron }}</div>
                 <template v-slot:input>
                   <div class="mt-4 title">Update Iron</div>
@@ -78,7 +72,6 @@ export default {
       headers: [
         {
           text: "",
-          sortable: false,
           value: "name"
         },
         { text: "x1", value: "x1" },
@@ -91,91 +84,84 @@ export default {
         { text: "b", value: "b" },
 
       ],
+      
       varijable: [
         {
           name: "Z = ",
-<<<<<<< HEAD
-          x1: 159,
-          x2: 6.0,
-          x3: 24,
-          x4: 4.0,
-          x5: "1%"
-=======
-          x1: 2,
-          x2: 11,
-          x3: 2,
-          x4: 5,
-          x5: 4,
-          min: true,
-          max: false,
-          b: 4
->>>>>>> a78476b116171ef411bae13bd1b65294edf69ef4
+          x1: 0.12,
+          x2: 0.057,
+          x3: 0.049,
+          x4: 0.044,
+          x5: 0.036,
+          //min: true,
+          //max: false,
+          //b: 4
         },
         {
           name: "(1)",
-          x1: 2,
-          x2: 11,
-          x3: 2,
-          x4: 5,
-          x5: 4,
+          x1: 1,
+          x2: 1,
+          x3: 1,
+          x4: 1,
+          x5: 1,
           min: true,
           max: false,
-          b: 4
+          b: 1178887.68
         },
         {
           name: "(2)",
-          x1: 2,
-          x2: 11,
-          x3: 2,
-          x4: 5,
-          x5: 4,
+          x1: 0.85,
+          x2: -0.15,
+          x3: -0.15,
+          x4: -0.15,
+          x5: -0.15,
           min: true,
           max: false,
-          b: 4
+          b: 0
         },
         {
           name: "(3)",
-          x1: 2,
-          x2: 11,
-          x3: 2,
-          x4: 5,
-          x5: 4,
+          x1: -0.3,
+          x2: 0.7,
+          x3: -0.3,
+          x4: -0.3,
+          x5: -0.3,
           min: true,
           max: false,
-          b: 4
+          b: 0
         },
         {
           name: "(4)",
-          x1: 2,
-          x2: 11,
-          x3: 2,
-          x4: 5,
-          x5: 4,
+          x1: -0.4,
+          x2: -0.4,
+          x3: 0.6,
+          x4: -0.4,
+          x5: -0.4,
           min: true,
           max: false,
-          b: 4
+          b: 0
         },
         {
           name: "(5)",
-          x1: 2,
-          x2: 11,
-          x3: 2,
-          x4: 5,
-          x5: 4,
+          x1: -0.15,
+          x2: -0.15,
+          x3: -0.15,
+          x4: 0.85,
+          x5: -0.15,
           min: true,
           max: false,
-          b: 4
+          b: 0
         },
         {
           name: "(6)",
-          x1: 2,
-          x2: 11,
-          x3: 2,
-          x4: 5,
-          x5: 4,
+          x1: -0.15,
+          x2: -0.15,
+          x3: -0.15,
+          x4: -0.15,
+          x5: 0.85,
           min: true,
           max: false,
-          b: 4
+          b: 0
         },
       ]
     };
@@ -206,45 +192,62 @@ export default {
       var solver = require("javascript-lp-solver"),
         results,
         model = {
-          optimize: "capacity",
+          optimize: "cilj",
           opType: "max",
           constraints: {
-            plane: { max: 44 },
-            person: { max: 512 },
-            cost: { max: 300000 }
+            x6: {max: 1176667.68},
+            x7: {max: 0},
+            x8: {min: 0},
+            x9: {max: 0},
+            x10: {min: 0},
+            x11: {min: 0}
           },
           variables: {
             x1: {
-              capacity: 20000,
-              plane: 1,
-              person: 8,
-              cost: 5000
+              cilj: 0.12,
+              x6: 1,
+              x7: 0.85,
+              x8: -0.3,
+              x9: -0.4,
+              x10: -0.15,
+              x11: -0.15
             },
             x2: {
-              capacity: 30000,
-              plane: 1,
-              person: 16,
-              cost: 9000
+              cilj: 0.057,
+              x6: 1,
+              x7: -0.15,
+              x8: 0.7,
+              x9: -0.4,
+              x10: -0.15,
+              x11: -0.15
             },
             x3: {
-              capacity: 30000,
-              plane: 1,
-              person: 16,
-              cost: 9000
+              cilj: 0.049,
+              x6: 1,
+              x7: -0.15,
+              x8: -0.3,
+              x9: 0.6,
+              x10: -0.15,
+              x11: -0.15
             },
             x4: {
-              capacity: 30000,
-              plane: 1,
-              person: 16,
-              cost: 9000
+              cilj: 0.044,
+              x6: 1,
+              x7: -0.15,
+              x8: -0.3,
+              x9: -0.4,
+              x10: 0.85,
+              x11: -0.15
             },
             x5: {
-              capacity: 30000,
-              plane: 1,
-              person: 16,
-              cost: 9000
+              cilj: 0.036,
+              x6: 1,
+              x7: -0.15,
+              x8: -0.3,
+              x9: -0.4,
+              x10: -0.15,
+              x11: 0.85
             },
-
           }
         };
 
