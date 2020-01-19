@@ -3,174 +3,99 @@
     <v-sheet align="center" justify="center" class="pa-12" width="900" height="820" tile>
       <v-img src="/noonoo.gif" class="mb-12" aspect-ratio="1" max-width="200" max-height="200"></v-img>
       <v-form ref="form">
-        <v-combobox v-model="select" :items="items" label="Koji je objektiv funkcije?"></v-combobox>
+        <v-combobox v-model="select" :items="items" label="Što radimo s funkcijom cilja?"></v-combobox>
         <div>
-          <v-data-table hide-default-footer :headers="headers" :items="varijable">
+          <v-data-table hide-default-footer disable-sort :headers="headers" :items="item">
             <template v-slot:item.name="props">
-              <v-edit-dialog
-                :return-value.sync="props.item.name"
-                @save="save"
-                @cancel="cancel"
-                @open="open"
-                @close="close"
-              >
+              <v-edit-dialog :return-value.sync="props.item.name">
                 {{ props.item.name }}
                 <template v-slot:input>
                   <v-text-field
                     v-model="props.item.name"
-                    :rules="[max25chars]"
-                    label="Edit"
+                    type="number"
                     single-line
-                    counter
                   ></v-text-field>
                 </template>
               </v-edit-dialog>
             </template>
 
             <template v-slot:item.x1="props">
-              <v-edit-dialog
-                :return-value.sync="props.item.x1"
-                large
-                persistent
-                @save="save"
-                @cancel="cancel"
-                @open="open"
-                @close="close"
-              >
+              <v-edit-dialog :return-value.sync="props.item.x1" large persistent>
                 <div>{{ props.item.x1 }}</div>
-                <template v-slot:input>
-                  <div class="mt-4 title">Update Iron</div>
-                </template>
                 <template v-slot:input>
                   <v-text-field
                     v-model="props.item.x1"
-                    :rules="[max25chars]"
-                    label="Edit"
+                    type="number"
                     single-line
-                    counter
-                    autofocus
                   ></v-text-field>
                 </template>
               </v-edit-dialog>
             </template>
 
             <template v-slot:item.x2="props">
-              <v-edit-dialog
-                :return-value.sync="props.item.x2"
-                large
-                persistent
-                @save="save"
-                @cancel="cancel"
-                @open="open"
-                @close="close"
-              >
+              <v-edit-dialog :return-value.sync="props.item.x2" large persistent>
                 <div>{{ props.item.x2 }}</div>
-                <template v-slot:input>
-                  <div class="mt-4 title">Update Iron</div>
-                </template>
                 <template v-slot:input>
                   <v-text-field
                     v-model="props.item.x2"
-                    :rules="[max25chars]"
-                    label="Edit"
+                    type="number"
                     single-line
-                    counter
-                    autofocus
-                  ></v-text-field>
-                </template>
-              </v-edit-dialog>
-            </template>
-            
-            <template v-slot:item.x3="props">
-              <v-edit-dialog
-                :return-value.sync="props.item.x3"
-                large
-                persistent
-                @save="save"
-                @cancel="cancel"
-                @open="open"
-                @close="close"
-              >
-                <div>{{ props.item.x3 }}</div>
-                <template v-slot:input>
-                  <div class="mt-4 title">Update Iron</div>
-                </template>
-                <template v-slot:input>
-                  <v-text-field
-                    v-model="props.item.x3"
-                    :rules="[max25chars]"
-                    label="Edit"
-                    single-line
-                    counter
-                    autofocus
-                  ></v-text-field>
-                </template>
-              </v-edit-dialog>
-            </template>
-            
-            <template v-slot:item.x4="props">
-              <v-edit-dialog
-                :return-value.sync="props.item.x4"
-                large
-                persistent
-                @save="save"
-                @cancel="cancel"
-                @open="open"
-                @close="close"
-              >
-                <div>{{ props.item.x4 }}</div>
-                <template v-slot:input>
-                  <div class="mt-4 title">Update Iron</div>
-                </template>
-                <template v-slot:input>
-                  <v-text-field
-                    v-model="props.item.x4"
-                    :rules="[max25chars]"
-                    label="Edit"
-                    single-line
-                    counter
-                    autofocus
-                  ></v-text-field>
-                </template>
-              </v-edit-dialog>
-            </template>
-            
-            <template v-slot:item.x5="props">
-              <v-edit-dialog
-                :return-value.sync="props.item.x5"
-                large
-                persistent
-                @save="save"
-                @cancel="cancel"
-                @open="open"
-                @close="close"
-              >
-                <div>{{ props.item.x5 }}</div>
-                <template v-slot:input>
-                  <div class="mt-4 title">Update Iron</div>
-                </template>
-                <template v-slot:input>
-                  <v-text-field
-                    v-model="props.item.x5"
-                    :rules="[max25chars]"
-                    label="Edit"
-                    single-line
-                    counter
-                    autofocus
                   ></v-text-field>
                 </template>
               </v-edit-dialog>
             </template>
 
-          </v-data-table>          
-          <v-snackbar v-model="snack" :timeout="3000" :color="snackColor">
-            {{ snackText }}
-            <v-btn text @click="snack = false">Close</v-btn>
-          </v-snackbar>
+            <template v-slot:item.x3="props">
+              <v-edit-dialog :return-value.sync="props.item.x3" large persistent>
+                <div>{{ props.item.x3 }}</div>
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.x3"
+                    type="number"
+                    single-line
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+
+            <template v-slot:item.x4="props">
+              <v-edit-dialog :return-value.sync="props.item.x4" large persistent>
+                <div>{{ props.item.x4 }}</div>
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.x4"
+                    type="number"
+                    single-line
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+
+            <template v-slot:item.x5="props">
+              <v-edit-dialog :return-value.sync="props.item.x5" large persistent>
+                <div>{{ props.item.x5 }}</div>
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.x5"
+                    type="number"
+                    single-line
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+
+            <template v-slot:item.minmax="props">
+              <v-edit-dialog :return-value.sync="props.item.minmax" large persistent>
+                <div>{{ props.item.minmax }}</div>
+                <template v-slot:input>
+                  <v-combobox v-model="props.item.minmax" :items="items"></v-combobox>
+                </template>
+              </v-edit-dialog>
+            </template>
+          </v-data-table>
         </div>
         <br />
         <v-btn color="success" class="mr-4" @click="solve">RIJEŠI</v-btn>
-        <v-alert>{{solve}}</v-alert>
       </v-form>
     </v-sheet>
   </v-row>
@@ -182,13 +107,7 @@ export default {
   data() {
     return {
       select: ["max"],
-      selected: ["max"],
       items: ["max", "min"],
-      snack: false,
-      snackColor: "",
-      snackText: "",
-      max25chars: v => v.length <= 25 || "Input too long!",
-      pagination: {},
       headers: [
         {
           text: "",
@@ -199,22 +118,18 @@ export default {
         { text: "x3", value: "x3" },
         { text: "x4", value: "x4" },
         { text: "x5", value: "x5" },
-        { text: ">=", value: "min" },
-        { text: "<=", value: "max" },
+        { text: ">=/<=", value: "minmax" },
         { text: "b", value: "b" }
       ],
-      
-      varijable: [
+
+      item: [
         {
           name: "Z = ",
           x1: 0.12,
           x2: 0.057,
           x3: 0.049,
           x4: 0.044,
-          x5: 0.036,
-          //min: true,
-          //max: false,
-          //b: 4
+          x5: 0.036
         },
         {
           name: "(1)",
@@ -223,8 +138,7 @@ export default {
           x3: 1,
           x4: 1,
           x5: 1,
-          min: true,
-          max: false,
+          minmax: "max",
           b: 1178887.68
         },
         {
@@ -234,8 +148,7 @@ export default {
           x3: -0.15,
           x4: -0.15,
           x5: -0.15,
-          min: true,
-          max: false,
+          minmax: "max",
           b: 0
         },
         {
@@ -245,8 +158,7 @@ export default {
           x3: -0.3,
           x4: -0.3,
           x5: -0.3,
-          min: true,
-          max: false,
+          minmax: "min",
           b: 0
         },
         {
@@ -256,8 +168,7 @@ export default {
           x3: 0.6,
           x4: -0.4,
           x5: -0.4,
-          min: true,
-          max: false,
+          minmax: "max",
           b: 0
         },
         {
@@ -267,8 +178,7 @@ export default {
           x3: -0.15,
           x4: 0.85,
           x5: -0.15,
-          min: true,
-          max: false,
+          minmax: "min",
           b: 0
         },
         {
@@ -278,32 +188,13 @@ export default {
           x3: -0.15,
           x4: -0.15,
           x5: 0.85,
-          min: true,
-          max: false,
+          minmax: "min",
           b: 0
-        },
+        }
       ]
     };
   },
   methods: {
-    save() {
-      this.snack = true;
-      this.snackColor = "success";
-      this.snackText = "Data saved";
-    },
-    cancel() {
-      this.snack = true;
-      this.snackColor = "error";
-      this.snackText = "Canceled";
-    },
-    open() {
-      this.snack = true;
-      this.snackColor = "info";
-      this.snackText = "Dialog opened";
-    },
-    close() {
-      console.log("Dialog closed");
-    },
     reset() {
       this.$refs.form.reset();
     },
@@ -312,61 +203,61 @@ export default {
         results,
         model = {
           optimize: "cilj",
-          opType: "max",
+          opType: this.select,
           constraints: {
-            x6: {max: 1176667.68},
-            x7: {max: 0},
-            x8: {min: 0},
-            x9: {max: 0},
-            x10: {min: 0},
-            x11: {min: 0}
+            x6: { [this.item[1].minmax]: this.item[1].b },
+            x7: { [this.item[2].minmax]: this.item[2].b },
+            x8: { [this.item[3].minmax]: this.item[3].b },
+            x9: { [this.item[4].minmax]: this.item[4].b },
+            x10: { [this.item[5].minmax]: this.item[5].b },
+            x11: { [this.item[6].minmax]: this.item[6].b }
           },
           variables: {
             x1: {
-              cilj: 0.12,
-              x6: 1,
-              x7: 0.85,
-              x8: -0.3,
-              x9: -0.4,
-              x10: -0.15,
-              x11: -0.15
+              cilj: this.item[0].x1,
+              x6: this.item[1].x1,
+              x7: this.item[2].x1,
+              x8: this.item[3].x1,
+              x9: this.item[4].x1,
+              x10: this.item[5].x1,
+              x11: this.item[6].x1
             },
             x2: {
-              cilj: 0.057,
-              x6: 1,
-              x7: -0.15,
-              x8: 0.7,
-              x9: -0.4,
-              x10: -0.15,
-              x11: -0.15
+              cilj: this.item[0].x2,
+              x6: this.item[1].x2,
+              x7: this.item[2].x2,
+              x8: this.item[3].x2,
+              x9: this.item[4].x2,
+              x10: this.item[5].x2,
+              x11: this.item[6].x2
             },
             x3: {
-              cilj: 0.049,
-              x6: 1,
-              x7: -0.15,
-              x8: -0.3,
-              x9: 0.6,
-              x10: -0.15,
-              x11: -0.15
+              cilj: this.item[0].x3,
+              x6: this.item[1].x3,
+              x7: this.item[2].x3,
+              x8: this.item[3].x3,
+              x9: this.item[4].x3,
+              x10: this.item[5].x3,
+              x11: this.item[6].x3
             },
             x4: {
-              cilj: 0.044,
-              x6: 1,
-              x7: -0.15,
-              x8: -0.3,
-              x9: -0.4,
-              x10: 0.85,
-              x11: -0.15
+              cilj: this.item[0].x4,
+              x6: this.item[1].x4,
+              x7: this.item[2].x4,
+              x8: this.item[3].x4,
+              x9: this.item[4].x4,
+              x10: this.item[5].x4,
+              x11: this.item[6].x4
             },
             x5: {
-              cilj: 0.036,
-              x6: 1,
-              x7: -0.15,
-              x8: -0.3,
-              x9: -0.4,
-              x10: -0.15,
-              x11: 0.85
-            },
+              cilj: this.item[0].x5,
+              x6: this.item[1].x5,
+              x7: this.item[2].x5,
+              x8: this.item[3].x5,
+              x9: this.item[4].x5,
+              x10: this.item[5].x5,
+              x11: this.item[6].x5
+            }
           }
         };
       results = solver.Solve(model);
