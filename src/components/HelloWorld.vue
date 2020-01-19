@@ -6,19 +6,6 @@
         <v-combobox v-model="select" :items="items" label="Što radimo s funkcijom cilja?"></v-combobox>
         <div>
           <v-data-table hide-default-footer disable-sort :headers="headers" :items="item">
-            <template v-slot:item.name="props">
-              <v-edit-dialog :return-value.sync="props.item.name">
-                {{ props.item.name }}
-                <template v-slot:input>
-                  <v-text-field
-                    v-model="props.item.name"
-                    type="number"
-                    single-line
-                  ></v-text-field>
-                </template>
-              </v-edit-dialog>
-            </template>
-
             <template v-slot:item.x1="props">
               <v-edit-dialog :return-value.sync="props.item.x1" large persistent>
                 <div>{{ props.item.x1 }}</div>
