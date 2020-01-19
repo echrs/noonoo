@@ -1,13 +1,11 @@
 <template>
   <v-row align="center" justify="center">
-    <v-sheet width="700" height="700" tile>
-      <v-img src="/noonoo.gif" aspect-ratio="1" max-width="200" max-height="200"></v-img>
+    <v-sheet align="center" justify="center" class="pa-12" width="900" height="820" tile>
+      <v-img src="/noonoo.gif" class="mb-12" aspect-ratio="1" max-width="200" max-height="200"></v-img>
       <v-form ref="form">
-        <v-text-field v-model="brvarijabli" label="Broj varijabli?"></v-text-field>
-        <v-text-field v-model="brogranicenja" label="Broj ograničenja?"></v-text-field>
-        <v-select v-if="brogranicenja" :items="items" label="Koji je objektiv funkcije?"></v-select>
+        <v-combobox v-model="select" :items="items" label="Koji je objektiv funkcije?"></v-combobox>
         <div>
-          <v-data-table :headers="headers" :items="varijable">
+          <v-data-table hide-default-footer :headers="headers" :items="varijable">
             <template v-slot:item.name="props">
               <v-edit-dialog
                 :return-value.sync="props.item.name"
@@ -28,9 +26,9 @@
                 </template>
               </v-edit-dialog>
             </template>
-            <template v-slot:item.iron="props">
+            <template v-slot:item.x1="props">
               <v-edit-dialog
-                :return-value.sync="props.item.iron"
+                :return-value.sync="props.item.x1"
                 large
                 persistent
                 @save="save"
@@ -38,13 +36,13 @@
                 @open="open"
                 @close="close"
               >
-                <div>{{ props.item.iron }}</div>
+                <div>{{ props.item.x1 }}</div>
                 <template v-slot:input>
                   <div class="mt-4 title">Update Iron</div>
                 </template>
                 <template v-slot:input>
                   <v-text-field
-                    v-model="props.item.iron"
+                    v-model="props.item.x1"
                     :rules="[max25chars]"
                     label="Edit"
                     single-line
@@ -61,8 +59,8 @@
             <v-btn text @click="snack = false">Close</v-btn>
           </v-snackbar>
         </div>
-        <v-btn color="success" class="mr-4" @click="solve">Solve</v-btn>
-        <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+        <br />
+        <v-btn color="success" class="mr-4" @click="solve">RIJEŠI</v-btn>
       </v-form>
     </v-sheet>
   </v-row>
@@ -73,8 +71,10 @@ export default {
   name: "HelloWorld",
   data() {
     return {
+      select: ["max"],
       brvarijabli: "",
       brogranicenja: "",
+      selected: ["max"],
       items: ["max", "min"],
       snack: false,
       snackColor: "",
@@ -94,9 +94,9 @@ export default {
         { text: "x5", value: "x5" },
         { text: ">=", value: "min" },
         { text: "<=", value: "max" },
-        { text: "b", value: "b" },
-
+        { text: "b", value: "b" }
       ],
+
       varijable: [
         {
           name: "Z = ",
@@ -174,7 +174,7 @@ export default {
           min: true,
           max: false,
           b: 4
-        },
+        }
       ]
     };
   },
@@ -204,29 +204,64 @@ export default {
       var solver = require("javascript-lp-solver"),
         results,
         model = {
-          optimize: "capacity",
+          optimize: "cilj",
           opType: "max",
           constraints: {
-            plane: { max: 44 },
-            person: { max: 512 },
-            cost: { max: 300000 }
+            x6: { max: 1176667.68 },
+            x7: { max: 0 },
+            x8: { min: 0 },
+            x9: { max: 0 },
+            x10: { min: 0 },
+            x11: { min: 0 }
           },
           variables: {
-            brit: {
-              capacity: 20000,
-              plane: 1,
-              person: 8,
-              cost: 5000
+            x1: {
+              cilj: 0.12,
+              x6: 1,
+              x7: 0.85,
+              x8: -0.3,
+              x9: -0.4,
+              x10: -0.15,
+              x11: -0.15
             },
-            yank: {
-              capacity: 30000,
-              plane: 1,
-              person: 16,
-              cost: 9000
+            x2: {
+              cilj: 0.057,
+              x6: 1,
+              x7: -0.15,
+              x8: 0.7,
+              x9: -0.4,
+              x10: -0.15,
+              x11: -0.15
+            },
+            x3: {
+              cilj: 0.049,
+              x6: 1,
+              x7: -0.15,
+              x8: -0.3,
+              x9: 0.6,
+              x10: -0.15,
+              x11: -0.15
+            },
+            x4: {
+              cilj: 0.044,
+              x6: 1,
+              x7: -0.15,
+              x8: -0.3,
+              x9: -0.4,
+              x10: 0.85,
+              x11: -0.15
+            },
+            x5: {
+              cilj: 0.036,
+              x6: 1,
+              x7: -0.15,
+              x8: -0.3,
+              x9: -0.4,
+              x10: -0.15,
+              x11: 0.85
             }
           }
         };
-
       results = solver.Solve(model);
       console.log(results);
     }
