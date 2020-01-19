@@ -7,15 +7,9 @@
         <v-text-field v-model="brogranicenja" label="Broj ograničenja?"></v-text-field>
         <v-select v-if="brogranicenja" :items="items" label="Koji je objektiv funkcije?"></v-select>
         <div>
-          <v-data-table :headers="headers" :items="desserts">
+          <v-data-table :headers="headers" :items="varijable">
             <template v-slot:item.name="props">
-              <v-edit-dialog
-                :return-value.sync="props.item.name"
-                @save="save"
-                @cancel="cancel"
-                @open="open"
-                @close="close"
-              >
+              <v-edit-dialog :return-value.sync="props.item.name" @save="save" @cancel="cancel" @open="open" @close="close">
                 {{ props.item.name }}
                 <template v-slot:input>
                   <v-text-field
@@ -97,7 +91,7 @@ export default {
         { text: "b", value: "b" },
 
       ],
-      desserts: [
+      varijable: [
         {
           name: "Z = ",
           x1: 159,
@@ -105,7 +99,6 @@ export default {
           x3: 24,
           x4: 4.0,
           x5: "1%"
-          
         },
         {
           name: "Ograničenje 1",
@@ -216,18 +209,37 @@ export default {
             cost: { max: 300000 }
           },
           variables: {
-            brit: {
+            x1: {
               capacity: 20000,
               plane: 1,
               person: 8,
               cost: 5000
             },
-            yank: {
+            x2: {
               capacity: 30000,
               plane: 1,
               person: 16,
               cost: 9000
-            }
+            },
+            x3: {
+              capacity: 30000,
+              plane: 1,
+              person: 16,
+              cost: 9000
+            },
+            x4: {
+              capacity: 30000,
+              plane: 1,
+              person: 16,
+              cost: 9000
+            },
+            x5: {
+              capacity: 30000,
+              plane: 1,
+              person: 16,
+              cost: 9000
+            },
+
           }
         };
 
