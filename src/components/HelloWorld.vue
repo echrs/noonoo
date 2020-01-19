@@ -94,84 +94,89 @@ export default {
       varijable: [
         {
           name: "Z = ",
+<<<<<<< HEAD
           x1: 159,
           x2: 6.0,
           x3: 24,
           x4: 4.0,
           x5: "1%"
+=======
+          x1: 2,
+          x2: 11,
+          x3: 2,
+          x4: 5,
+          x5: 4,
+          min: true,
+          max: false,
+          b: 4
+>>>>>>> a78476b116171ef411bae13bd1b65294edf69ef4
         },
         {
-          name: "Ograničenje 1",
-          x1: 237,
-          x2: 9.0,
-          x3: 37,
-          x4: 4.3,
-          x5: "1%"
+          name: "(1)",
+          x1: 2,
+          x2: 11,
+          x3: 2,
+          x4: 5,
+          x5: 4,
+          min: true,
+          max: false,
+          b: 4
         },
         {
-          name: "Eclair",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: "7%"
+          name: "(2)",
+          x1: 2,
+          x2: 11,
+          x3: 2,
+          x4: 5,
+          x5: 4,
+          min: true,
+          max: false,
+          b: 4
         },
         {
-          name: "Cupcake",
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: "8%"
+          name: "(3)",
+          x1: 2,
+          x2: 11,
+          x3: 2,
+          x4: 5,
+          x5: 4,
+          min: true,
+          max: false,
+          b: 4
         },
         {
-          name: "Gingerbread",
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: "16%"
+          name: "(4)",
+          x1: 2,
+          x2: 11,
+          x3: 2,
+          x4: 5,
+          x5: 4,
+          min: true,
+          max: false,
+          b: 4
         },
         {
-          name: "Jelly bean",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: "0%"
+          name: "(5)",
+          x1: 2,
+          x2: 11,
+          x3: 2,
+          x4: 5,
+          x5: 4,
+          min: true,
+          max: false,
+          b: 4
         },
         {
-          name: "Lollipop",
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: "2%"
+          name: "(6)",
+          x1: 2,
+          x2: 11,
+          x3: 2,
+          x4: 5,
+          x5: 4,
+          min: true,
+          max: false,
+          b: 4
         },
-        {
-          name: "Honeycomb",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: "45%"
-        },
-        {
-          name: "Donut",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: "22%"
-        },
-        {
-          name: "KitKat",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: "6%"
-        }
       ]
     };
   },
