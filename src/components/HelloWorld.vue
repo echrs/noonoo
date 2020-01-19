@@ -5,14 +5,15 @@
       <v-form ref="form">
         <v-combobox v-model="select" :items="items" label="Koji je objektiv funkcije?"></v-combobox>
         <div>
-<<<<<<< HEAD
-          <v-data-table :headers="headers" :items="varijable">
-            
-=======
           <v-data-table hide-default-footer :headers="headers" :items="varijable">
->>>>>>> e7bae9d755a85d6336e4ed596c5499b879a436cd
             <template v-slot:item.name="props">
-              <v-edit-dialog :return-value.sync="props.item.name" @save="save" @cancel="cancel" @open="open" @close="close">
+              <v-edit-dialog
+                :return-value.sync="props.item.name"
+                @save="save"
+                @cancel="cancel"
+                @open="open"
+                @close="close"
+              >
                 {{ props.item.name }}
                 <template v-slot:input>
                   <v-text-field
@@ -25,12 +26,7 @@
                 </template>
               </v-edit-dialog>
             </template>
-<<<<<<< HEAD
 
-            <template v-slot:item.iron="props">
-              <v-edit-dialog :return-value.sync="props.item.iron" large persistent @save="save" @cancel="cancel" @open="open" @close="close">
-                <div>{{ props.item.iron }}</div>
-=======
             <template v-slot:item.x1="props">
               <v-edit-dialog
                 :return-value.sync="props.item.x1"
@@ -42,7 +38,6 @@
                 @close="close"
               >
                 <div>{{ props.item.x1 }}</div>
->>>>>>> e7bae9d755a85d6336e4ed596c5499b879a436cd
                 <template v-slot:input>
                   <div class="mt-4 title">Update Iron</div>
                 </template>
@@ -58,8 +53,116 @@
                 </template>
               </v-edit-dialog>
             </template>
-          </v-data-table>
 
+            <template v-slot:item.x2="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.x2"
+                large
+                persistent
+                @save="save"
+                @cancel="cancel"
+                @open="open"
+                @close="close"
+              >
+                <div>{{ props.item.x2 }}</div>
+                <template v-slot:input>
+                  <div class="mt-4 title">Update Iron</div>
+                </template>
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.x2"
+                    :rules="[max25chars]"
+                    label="Edit"
+                    single-line
+                    counter
+                    autofocus
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            
+            <template v-slot:item.x3="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.x3"
+                large
+                persistent
+                @save="save"
+                @cancel="cancel"
+                @open="open"
+                @close="close"
+              >
+                <div>{{ props.item.x3 }}</div>
+                <template v-slot:input>
+                  <div class="mt-4 title">Update Iron</div>
+                </template>
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.x3"
+                    :rules="[max25chars]"
+                    label="Edit"
+                    single-line
+                    counter
+                    autofocus
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            
+            <template v-slot:item.x4="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.x4"
+                large
+                persistent
+                @save="save"
+                @cancel="cancel"
+                @open="open"
+                @close="close"
+              >
+                <div>{{ props.item.x4 }}</div>
+                <template v-slot:input>
+                  <div class="mt-4 title">Update Iron</div>
+                </template>
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.x4"
+                    :rules="[max25chars]"
+                    label="Edit"
+                    single-line
+                    counter
+                    autofocus
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            
+            <template v-slot:item.x5="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.x5"
+                large
+                persistent
+                @save="save"
+                @cancel="cancel"
+                @open="open"
+                @close="close"
+              >
+                <div>{{ props.item.x5 }}</div>
+                <template v-slot:input>
+                  <div class="mt-4 title">Update Iron</div>
+                </template>
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.x5"
+                    :rules="[max25chars]"
+                    label="Edit"
+                    single-line
+                    counter
+                    autofocus
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+
+          </v-data-table>          
           <v-snackbar v-model="snack" :timeout="3000" :color="snackColor">
             {{ snackText }}
             <v-btn text @click="snack = false">Close</v-btn>
@@ -67,6 +170,7 @@
         </div>
         <br />
         <v-btn color="success" class="mr-4" @click="solve">RIJEŠI</v-btn>
+        <v-alert>{{solve}}</v-alert>
       </v-form>
     </v-sheet>
   </v-row>
@@ -78,8 +182,6 @@ export default {
   data() {
     return {
       select: ["max"],
-      brvarijabli: "",
-      brogranicenja: "",
       selected: ["max"],
       items: ["max", "min"],
       snack: false,
@@ -101,11 +203,7 @@ export default {
         { text: "<=", value: "max" },
         { text: "b", value: "b" }
       ],
-<<<<<<< HEAD
       
-=======
-
->>>>>>> e7bae9d755a85d6336e4ed596c5499b879a436cd
       varijable: [
         {
           name: "Z = ",
@@ -182,13 +280,8 @@ export default {
           x5: 0.85,
           min: true,
           max: false,
-<<<<<<< HEAD
           b: 0
         },
-=======
-          b: 4
-        }
->>>>>>> e7bae9d755a85d6336e4ed596c5499b879a436cd
       ]
     };
   },
@@ -221,21 +314,12 @@ export default {
           optimize: "cilj",
           opType: "max",
           constraints: {
-<<<<<<< HEAD
             x6: {max: 1176667.68},
             x7: {max: 0},
             x8: {min: 0},
             x9: {max: 0},
             x10: {min: 0},
             x11: {min: 0}
-=======
-            x6: { max: 1176667.68 },
-            x7: { max: 0 },
-            x8: { min: 0 },
-            x9: { max: 0 },
-            x10: { min: 0 },
-            x11: { min: 0 }
->>>>>>> e7bae9d755a85d6336e4ed596c5499b879a436cd
           },
           variables: {
             x1: {
@@ -255,7 +339,6 @@ export default {
               x9: -0.4,
               x10: -0.15,
               x11: -0.15
-<<<<<<< HEAD
             },
             x3: {
               cilj: 0.049,
@@ -284,36 +367,6 @@ export default {
               x10: -0.15,
               x11: 0.85
             },
-=======
-            },
-            x3: {
-              cilj: 0.049,
-              x6: 1,
-              x7: -0.15,
-              x8: -0.3,
-              x9: 0.6,
-              x10: -0.15,
-              x11: -0.15
-            },
-            x4: {
-              cilj: 0.044,
-              x6: 1,
-              x7: -0.15,
-              x8: -0.3,
-              x9: -0.4,
-              x10: 0.85,
-              x11: -0.15
-            },
-            x5: {
-              cilj: 0.036,
-              x6: 1,
-              x7: -0.15,
-              x8: -0.3,
-              x9: -0.4,
-              x10: -0.15,
-              x11: 0.85
-            }
->>>>>>> e7bae9d755a85d6336e4ed596c5499b879a436cd
           }
         };
       results = solver.Solve(model);
