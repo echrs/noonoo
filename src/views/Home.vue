@@ -1,17 +1,17 @@
 <template>
   <v-layout fill-height>
-    <HelloWorld/>
+    <NooNoo/>
   </v-layout>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import NooNoo from '@/components/NooNoo.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    NooNoo
   }
 }
 </script>
