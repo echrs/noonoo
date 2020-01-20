@@ -1,20 +1,31 @@
 <template>
   <v-row align="center" justify="center">
-    <v-sheet align="center" justify="center" class="pa-12" width="900" height="820" tile>
+    
+    <v-sheet
+      elevation="1"
+      align="center"
+      justify="center"
+      class="pa-12 mt-12 mb-12"
+      width="900"
+      height="880"
+      normal
+    >
       <v-img src="/noonoo.gif" class="mb-12" aspect-ratio="1" max-width="200" max-height="200"></v-img>
       <v-form ref="form">
-        <v-combobox v-model="select" :items="items" label="Što radimo s funkcijom cilja?"></v-combobox>
+        <v-combobox
+          v-model="select"
+          :items="items"
+          outlined
+          dense
+          label="Što radimo s funkcijom cilja?"
+        ></v-combobox>
         <div>
           <v-data-table hide-default-footer disable-sort :headers="headers" :items="item">
             <template v-slot:item.x1="props">
               <v-edit-dialog :return-value.sync="props.item.x1" large persistent>
                 <div>{{ props.item.x1 }}</div>
                 <template v-slot:input>
-                  <v-text-field
-                    v-model="props.item.x1"
-                    type="number"
-                    single-line
-                  ></v-text-field>
+                  <v-text-field v-model="props.item.x1" type="number" single-line></v-text-field>
                 </template>
               </v-edit-dialog>
             </template>
@@ -23,11 +34,7 @@
               <v-edit-dialog :return-value.sync="props.item.x2" large persistent>
                 <div>{{ props.item.x2 }}</div>
                 <template v-slot:input>
-                  <v-text-field
-                    v-model="props.item.x2"
-                    type="number"
-                    single-line
-                  ></v-text-field>
+                  <v-text-field v-model="props.item.x2" type="number" single-line></v-text-field>
                 </template>
               </v-edit-dialog>
             </template>
@@ -36,11 +43,7 @@
               <v-edit-dialog :return-value.sync="props.item.x3" large persistent>
                 <div>{{ props.item.x3 }}</div>
                 <template v-slot:input>
-                  <v-text-field
-                    v-model="props.item.x3"
-                    type="number"
-                    single-line
-                  ></v-text-field>
+                  <v-text-field v-model="props.item.x3" type="number" single-line></v-text-field>
                 </template>
               </v-edit-dialog>
             </template>
@@ -49,11 +52,7 @@
               <v-edit-dialog :return-value.sync="props.item.x4" large persistent>
                 <div>{{ props.item.x4 }}</div>
                 <template v-slot:input>
-                  <v-text-field
-                    v-model="props.item.x4"
-                    type="number"
-                    single-line
-                  ></v-text-field>
+                  <v-text-field v-model="props.item.x4" type="number" single-line></v-text-field>
                 </template>
               </v-edit-dialog>
             </template>
@@ -62,11 +61,7 @@
               <v-edit-dialog :return-value.sync="props.item.x5" large persistent>
                 <div>{{ props.item.x5 }}</div>
                 <template v-slot:input>
-                  <v-text-field
-                    v-model="props.item.x5"
-                    type="number"
-                    single-line
-                  ></v-text-field>
+                  <v-text-field v-model="props.item.x5" type="number" single-line></v-text-field>
                 </template>
               </v-edit-dialog>
             </template>
@@ -82,8 +77,49 @@
           </v-data-table>
         </div>
         <br />
-        <v-btn color="success" class="mr-4" @click="solve">RIJEŠI</v-btn>
       </v-form>
+      <div class="my-2 mb-12">
+        <v-btn depressed large color="white--text blue darken-1" @click="solve">RIJEŠI</v-btn>
+      </div>
+      <div class="my-2 mb-12">
+        <v-row cols="6" align="center" justify="center"> 
+        <v-card>
+          <v-card-title class="subheading font-weight-bold">Rezultat</v-card-title>
+          <v-divider></v-divider>
+          <v-list dense>
+            <v-list-item>
+              <v-list-item-content>x1:</v-list-item-content>
+              <v-list-item-content class="align-end">{{ x1 }}</v-list-item-content>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-content>x2:</v-list-item-content>
+              <v-list-item-content class="align-end">{{ x2 }}</v-list-item-content>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-content>x3:</v-list-item-content>
+              <v-list-item-content class="align-end">{{ x3 }}</v-list-item-content>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-content>x4:</v-list-item-content>
+              <v-list-item-content class="align-end">{{ x4 }}</v-list-item-content>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-content>x5:</v-list-item-content>
+              <v-list-item-content class="align-end">{{ x5 }}</v-list-item-content>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-content>Z:</v-list-item-content>
+              <v-list-item-content class="align-end">{{ result }}</v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-card>
+        </v-row>
+      </div>
     </v-sheet>
   </v-row>
 </template>
@@ -93,7 +129,15 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      select: ["max"],
+      feasible: false,
+      result: "",
+      bounded: "",
+      x1: "",
+      x2: "",
+      x3: "",
+      x4: "",
+      x5: "",
+      select: "max",
       items: ["max", "min"],
       headers: [
         {
@@ -106,7 +150,7 @@ export default {
         { text: "x4", value: "x4" },
         { text: "x5", value: "x5" },
         { text: ">=/<=", value: "minmax" },
-        { text: "b", value: "b" }
+        { text: "RHS", value: "b" }
       ],
 
       item: [
@@ -248,7 +292,18 @@ export default {
           }
         };
       results = solver.Solve(model);
+      results = JSON.stringify(results);
+      var object = JSON.parse(results);
       console.log(results);
+      this.feasible = object.feasible;
+      this.result = object.result;
+      this.bounded = object.bounded;
+      this.x1 = object.x1;
+      this.x2 = object.x2;
+      this.x3 = object.x3;
+      this.x4 = object.x4;
+      this.x5 = object.x5;
+      return object;
     }
   }
 };
