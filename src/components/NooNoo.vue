@@ -113,7 +113,7 @@
           <div class="my-2 mb-12">
             <v-card outlined class="mt-6">
               <v-card-title>
-                <h6 class="idipavidi">Rezultat modela</h6>
+                <h6 class="btnresult">Rezultat modela</h6>
               </v-card-title>
               <v-divider></v-divider>
               <v-list dense rounded>
@@ -345,8 +345,7 @@ export default {
 </script>
 
 <style lang="scss">
-.idipavidi {
-  text-align: center;
+.btnresult {
   color: #0d0d0d;
   font-size: 18px;
   font-weight: normal;
