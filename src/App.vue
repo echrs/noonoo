@@ -1,14 +1,14 @@
 <template>
-  <v-app id="fibot">
+  <v-app id="noonoo">
     <div>
-      <v-app-bar color="blue" class="justify-center" flat height="75px">
+      <v-app-bar color="light-blue darken-1" collapse-on-scroll class="justify-center"  height="80px">
         <v-spacer />
         <v-toolbar-title>
           <router-link to="/">
-            <img src="/logo.png" width="150" height="30" alt="Logo Noo-Noo" />
+            <img src="/logo.png" width="240" height="45" alt="Logo Noo-Noo" />
           </router-link>
         </v-toolbar-title>
-        <v-img src="/noonoo.gif" class="ml-3" max-width="75" max-height="75" />
+        <v-img src="/noonoo.gif" class="ml-4" max-width="75" max-height="85" />
         <v-spacer />
       </v-app-bar>
     </div>
