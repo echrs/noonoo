@@ -1,5 +1,5 @@
 # noonoo
-Projekt iz Operacijskih istraživanja na FIPU.
+Projekt iz Operacijskih istraživanja na FIPU.   
 Izradili: Toni Starčić, Nikki Bernobić
 
 ## Project setup
