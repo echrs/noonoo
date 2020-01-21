@@ -1,8 +1,8 @@
 # noonoo
 Projekt iz Operacijskih istraživanja na Fakultetu Informatike u Puli.   
 Izradili: Toni Starčić, Nikki Bernobić
-
-Korišten [jsLPSolver](https://github.com/JWally/jsLPSolver)
+   
+Solver: [jsLPSolver](https://github.com/JWally/jsLPSolver)
 
 ## Project setup
 ```
