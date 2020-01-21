@@ -1,15 +1,9 @@
 <template>
   <v-container>
     <v-row class="justify-center">
-       <v-col cols="2"></v-col> 
+      <v-col cols="2"></v-col>
       <v-col cols="8">
-        <v-sheet
-          elevation="2"
-          align="center"
-          justify="center"
-          class="pa-12 mt-12 mb-12"
-          normal
-        >
+        <v-sheet elevation="2" align="center" justify="center" class="pa-12 mt-12 mb-12" normal>
           <v-img src="/noonoo.gif" class="mb-12" aspect-ratio="1" max-width="200" max-height="200"></v-img>
           <v-form ref="form">
             <v-combobox
@@ -20,7 +14,7 @@
               label="Što radimo s funkcijom cilja?"
               class="mb-5"
             ></v-combobox>
-              <v-card class="mb-6" outlined>
+            <v-card class="mb-6" outlined>
               <v-data-table hide-default-footer disable-sort :headers="headers" :items="item">
                 <!-- x1 -->
                 <template v-slot:item.x1="props">
@@ -87,12 +81,12 @@
                   <v-edit-dialog :return-value.sync="props.item.b" large persistent>
                     <div>{{ props.item.b }}</div>
                     <template v-slot:input>
-                      <v-combobox v-model="props.item.b" type="number" single-line></v-combobox>
+                      <v-text-field v-model="props.item.b" type="number" single-line></v-text-field>
                     </template>
                   </v-edit-dialog>
                 </template>
               </v-data-table>
-              </v-card>
+            </v-card>
           </v-form>
 
           <v-row class="d-flex justify-content-between justify-center">
@@ -100,53 +94,62 @@
               <div v-if="result == null || result == 0">
                 <v-alert :value="alert" type="error">Nešto nije u redu</v-alert>
               </div>
-                <!-- dismissible  -->
+              <!-- dismissible  -->
               <div v-else>
                 <v-alert :value="alert" type="success">Sve je prošlo super</v-alert>
               </div>
             </v-col>
             <v-col cols="6">
-              <v-btn depressed large class="mt-2" color="white--text light-blue darken-1" :value="alert" @click="solve">RIJEŠI</v-btn>
+              <v-btn
+                depressed
+                large
+                class="mt-2"
+                color="white--text light-blue darken-1"
+                :value="alert"
+                @click="solve"
+              >RIJEŠI</v-btn>
             </v-col>
           </v-row>
-         <div class="my-2 mb-12">
+          <div class="my-2 mb-12">
             <v-card outlined class="mt-6">
-              <v-card-title ><h6 class="idipavidi">Rezultat modela</h6></v-card-title>
+              <v-card-title>
+                <h6 class="idipavidi">Rezultat modela</h6>
+              </v-card-title>
               <v-divider></v-divider>
               <v-list dense rounded>
                 <v-list-item>
-                  <v-list-item-content class="align-end"> 
+                  <v-list-item-content class="align-end">
                     <v-list-item-title>x1:</v-list-item-title>
                     <v-list-item-subtitle class="align-end">{{ x1 }}</v-list-item-subtitle>
                   </v-list-item-content>
-                  <v-list-item-content class="align-end"> 
+                  <v-list-item-content class="align-end">
                     <v-list-item-title>x2:</v-list-item-title>
                     <v-list-item-subtitle class="align-end">{{ x2 }}</v-list-item-subtitle>
                   </v-list-item-content>
-                  <v-list-item-content class="align-end"> 
+                  <v-list-item-content class="align-end">
                     <v-list-item-title>x3:</v-list-item-title>
                     <v-list-item-subtitle class="align-end">{{ x3 }}</v-list-item-subtitle>
                   </v-list-item-content>
-                  <v-list-item-content class="align-end"> 
+                  <v-list-item-content class="align-end">
                     <v-list-item-title>x4:</v-list-item-title>
                     <v-list-item-subtitle class="align-end">{{ x4 }}</v-list-item-subtitle>
                   </v-list-item-content>
-                  <v-list-item-content class="align-end"> 
+                  <v-list-item-content class="align-end">
                     <v-list-item-title>x5:</v-list-item-title>
                     <v-list-item-subtitle class="align-end">{{ x5 }}</v-list-item-subtitle>
                   </v-list-item-content>
-                  <v-list-item-content class="align-end"> 
+                  <v-list-item-content class="align-end">
                     <v-list-item-title>Z:</v-list-item-title>
                     <v-list-item-subtitle class="align-end">{{ result }}</v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
             </v-card>
-          <!-- </v-row> -->
-        </div>
+            <!-- </v-row> -->
+          </div>
         </v-sheet>
       </v-col>
-       <v-col cols="2" > </v-col> 
+      <v-col cols="2"></v-col>
     </v-row>
   </v-container>
 </template>
@@ -165,6 +168,7 @@ export default {
       x3: "",
       x4: "",
       x5: "",
+      b: "",
       select: "max",
       items: ["max", "min"],
       headers: [
@@ -198,7 +202,7 @@ export default {
           x4: 1,
           x5: 1,
           minmax: "max",
-          b: 1178887.68
+          b: 1259112.13
         },
         {
           name: "(2)",
@@ -254,15 +258,12 @@ export default {
     };
   },
   watch: {
-    result: function (result) {
-    console.log("Watch aktiviran");
-      this.alert=true;
-      }
+    result: function(result) {
+      console.log("Watch aktiviran");
+      this.alert = true;
+    }
   },
   methods: {
-    reset() {
-      this.$refs.form.reset();
-    },
     solve() {
       var solver = require("javascript-lp-solver"),
         results,
