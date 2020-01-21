@@ -1,4 +1,6 @@
 # noonoo
+Projekt iz Operacijskih istraživanja na Fakultetu Informatike u Puli.   
+Izradili: Toni Starčić, Nikki Bernobić
 
 ## Project setup
 ```
