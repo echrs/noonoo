@@ -98,11 +98,11 @@
           <v-row class="d-flex justify-content-between justify-center">
             <v-col cols="6">
               <div v-if="result == null || result == 0">
-                <v-alert :value="alert" type="error">Nešto nije u redu</v-alert>
+                <v-alert :value="alert" type="error">Nešto nije u redu.</v-alert>
               </div>
                 <!-- dismissible  -->
               <div v-else>
-                <v-alert :value="alert" type="success">Sve je prošlo super</v-alert>
+                <v-alert :value="alert" type="success">Dobiveno je optimalno rješenje.</v-alert>
               </div>
             </v-col>
             <v-col cols="6">
